@@ -1,6 +1,9 @@
 # myslq-replication
 MySQL replication with Docker
 
+Usei como base o codigo do site: "https://hackernoon.com/mysql-master-slave-replication-using-docker-3pp3u97"
+"https://github.com/vbabak/docker-mysql-master-slave"
+
 Executar
 Para executar esses exemplos, você precisará iniciar os contêineres com "docker-compose" e após iniciar a replicação de configuração. Veja os comandos dentro de ./build.sh.
 

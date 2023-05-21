@@ -1,0 +1,34 @@
+version: '3'
+services:
+  bdm1:
+    image: mysql:8.0
+    env_file:
+      - ./bdm1/mysql_bdm1.env
+    container_name: "bdm1"
+    restart: "no"
+    ports:
+      - 4420:3306
+    volumes:
+      - ./bdm1/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./bdm1/data:/var/lib/mysql
+    networks:
+      - bbsnetwork
+
+  bdm2:
+    image: mysql:8.0
+    env_file:
+      - ./bdm2/mysql_bdm2.env
+    container_name: "bdm2"
+    restart: "no"
+    ports:
+      - 4030:3306
+    depends_on:
+      - bdm1
+    volumes:
+      - ./bdm2/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./bdm2/data:/var/lib/mysql
+    networks:
+      - bdsnetwork
+
+networks:
+  bdsnetwork:
